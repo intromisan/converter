@@ -14,19 +14,82 @@
 
 .container {
     background-color: white;
+    border-radius: 30px;
     width: 375px;
-    height: 612px;
+    height: 672px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Roboto';
 }
 
 .top,
 .bottom {
     height: 50%;
+    width: 100%;
+    padding: 0 5%;
+}
+
+.top {
+    background-color: #fe4f4d;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10% 5% 20%;
+}
+
+.symbol-currency {
+    color: #f4a4a5;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.amount {
+    font-size: 5em;
+}
+
+.top .amount {
+    margin-top: 2rem;
+}
+
+.bottom .amount {
+    margin-bottom: 2rem;
+}
+
+.full-currency {
+    font-size: 1.6rem;
+}
+
+.bottom {
+    color: #fe4f4d;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20% 5% 10%;
 }
 
 .arrow {
     position: absolute;
+    height: 100px;
+    width: 100px;
+    border: 8px solid #fe4f4d;
+    background-color: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.arrow i {
+    font-size: 3rem;
+    color: #fe4f4d;
 }

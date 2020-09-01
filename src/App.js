@@ -1,35 +1,17 @@
 import React from 'react';
+
 import './App.css';
+import Arrow from './components/Arrow/Arrow';
+import Bottom from './components/Bottom/Bottom';
+import Top from './components/Top/Top';
 
 function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="top">
-          <div className="top__full-currency">
-            United States Dollar
-          </div>
-          <div className="top__amount">
-            200
-          </div>
-          <div className="top__symbol-currency">
-            USD
-          </div>
-        </div>
-        <div className="arrow">
-          <i class="small material-icons">arrow_upward</i>
-        </div>
-        <div className="bottom">
-          <div className="bottom__full-currency">
-            Euro
-          </div>
-          <div className="bottom__amount">
-            187
-          </div>
-          <div className="bottom__symbol-currency">
-            EUR
-          </div>
-        </div>
+        <Arrow />
+        <Top />
+        <Bottom />
       </div>
     </div>
   );
