@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+li {
+    list-style: none;
+}
+
 .App {
     background-color: #fdf4f4;
     width: 100%;
@@ -13,15 +17,21 @@
 }
 
 .container {
+    overflow: hidden;
     background-color: white;
     border-radius: 30px;
     width: 375px;
     height: 672px;
     margin: 0 auto;
+    font-family: 'Roboto';
+}
+
+main {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Roboto';
 }
 
 .top,
@@ -93,3 +103,56 @@
     font-size: 3rem;
     color: #fe4f4d;
 }
+
+.currency-list {
+    z-index: 10;
+    position: relative;
+    top: -100%;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    transition: all .5s ease-out;
+    background-color: #fe4f4d;
+    color: white;
+    padding: 5%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(110%);
+}
+
+.return-btn i{
+    font-size: 2.5rem;
+    height: 20%;;
+}
+
+.currencies {
+    padding-left: 5%;
+    height: 90%;
+    overflow-x: hidden;
+    /* overflow-y: scroll; */
+}
+
+.currencies::-webkit-scrollbar {
+    display: none;
+}
+
+.currencies li {
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.currencies li span {
+    font-size: .8rem;
+    color: #f4a4a5;
+}
+
+
+
+.slideleft {
+    transform: translateX(0);
+}
+
+
