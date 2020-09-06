@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './App.css';
+import AnimationContext from './context/AnimationContext';
 import Main from './components/Main/Main';
 import CurrencyList from './components/CurrencyList/CurrencyList';
+import TopInput from './components/Input/TopInput';
+import StateContext from './context/StateContext';
+import BottomInput from './components/Input/BottomInput';
 
 function App() {
-  const [slideLeft, setSlideLeft] = useState(false);
+  const [currencyAnimation, setcurrencyAnimation] = useState(false);
+  const [topInputAnimation, setTopInputAnimation] = useState(false);
+  const [bottomInputAnimation, setBottomInputAnimation] = useState(false);
+  const [inputType, setInputType] = useState('');
+  const [spin, setSpin] = useState(false)
+  const [direction, setDirection] = useState('');
+  const [topAmount, setTopAmount] = useState(0);
+  const [bottomAmount, setBottomAmount] = useState(0)
 
   const currencies = {
     AED: "United Arab Emirates Dirham",
@@ -24,17 +35,56 @@ function App() {
     BGN: "Bulgarian Lev"
   }
 
+  useEffect(() => {
+    setSpin(false)
+  }, []);
+
   return (
-    <div className="App">
-      <button onClick={() => setSlideLeft(true)}>Slide Left</button>
-      <button onClick={() => setSlideLeft(false)}>Slide Right</button>
-      <div className="container">
-        <Main />
-        <CurrencyList
-          currencyList={currencies}
-          left={slideLeft} />
-      </div>
-    </div>
+    <StateContext.Provider value={{
+      topAmount: topAmount,
+      bottomAmount: bottomAmount,
+      onTopAmount: (amount) => amount !== '' ? setTopAmount(amount) : setTopAmount(0),
+      onBottomAmount: (amount) => amount !== '' ? setBottomAmount(amount) : setBottomAmount(0)
+    }}>
+      <AnimationContext.Provider value={{
+        currencyAnimation: currencyAnimation,
+        topInputAnimation: topInputAnimation,
+        bottomInputAnimation: bottomInputAnimation,
+        inputType: inputType,
+        spin: spin,
+        animateCurrency: () => setcurrencyAnimation(!currencyAnimation),
+        animateTopInput: (inputType) => {
+          setTopInputAnimation(!topInputAnimation);
+          setInputType(inputType);
+        },
+        animateBottomInput: (inputType) => {
+          setBottomInputAnimation(!bottomInputAnimation);
+          setInputType(inputType);
+        },
+        animateSpin: (dir) => {
+          if (direction === '') {
+            setDirection(dir);
+            setSpin(!spin);
+          } else {
+            if (dir !== direction) {
+              setDirection(dir);
+              setSpin(!spin);
+            }
+          }
+        }
+      }}>
+        <div className="App">
+          <div className="container">
+            <Main />
+            <CurrencyList
+              currencyList={currencies}
+            />
+            <TopInput />
+            <BottomInput />
+          </div>
+        </div>
+      </AnimationContext.Provider>
+    </StateContext.Provider>
   );
 }
 

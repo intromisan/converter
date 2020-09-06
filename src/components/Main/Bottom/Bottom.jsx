@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useContext } from "react";
+
+import AnimationContext from "../../../context/AnimationContext";
+import StateContext from "../../../context/StateContext";
 
 const Bottom = () => {
-    return (
-        <div className="bottom">
-            <div className="full-currency">
-                Euro
-          </div>
-            <div className="amount">
-                187.67
-          </div>
-            <div className="symbol-currency">
-                EUR
-          </div>
-        </div>
-      
-    );
-}
+  const animation = useContext(AnimationContext);
+  const state = useContext(StateContext);
+
+  return (
+    <div className="main-bottom">
+      <div className="full-currency" onClick={animation.animateCurrency}>
+        Euro
+      </div>
+      <div
+        className="amount"
+        onClick={() => animation.animateBottomInput("bottom")}
+      >
+        {state.bottomAmount}
+      </div>
+      <div className="symbol-currency">EUR</div>
+    </div>
+  );
+};
 
 export default Bottom;
+
+// onClick={animation.animateInput()}
