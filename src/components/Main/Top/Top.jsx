@@ -9,13 +9,13 @@ const Top = () => {
 
   return (
     <div className="main-top">
-      <div className="full-currency" onClick={animation.animateCurrency}>
-        United States Dollar
+      <div className="full-currency" onClick={() => animation.animateCurrency('top')}>
+        {state.topCurrency[1]}
       </div>
       <div className="amount" onClick={() => animation.animateTopInput("top")}>
         {state.topAmount}
       </div>
-      <div className="symbol-currency">USD</div>
+      <div className="symbol-currency">{state.topCurrency[0]}</div>
     </div>
   );
 };

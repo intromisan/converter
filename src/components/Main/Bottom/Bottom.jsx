@@ -9,8 +9,8 @@ const Bottom = () => {
 
   return (
     <div className="main-bottom">
-      <div className="full-currency" onClick={animation.animateCurrency}>
-        Euro
+      <div className="full-currency" onClick={() => animation.animateCurrency('bottom')}>
+      {state.bottomCurrency[1]}
       </div>
       <div
         className="amount"
@@ -18,7 +18,7 @@ const Bottom = () => {
       >
         {state.bottomAmount}
       </div>
-      <div className="symbol-currency">EUR</div>
+      <div className="symbol-currency">{state.bottomCurrency[0]}</div>
     </div>
   );
 };
